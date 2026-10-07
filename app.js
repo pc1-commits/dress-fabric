@@ -101,4 +101,30 @@ $("order").onclick = () => {
 const WA_LINK = `https://wa.me/${SHOP_PHONE}?text=${encodeURIComponent("Hello Dress Fabric, I have an enquiry about your dresses.")}`;
 $("waTop").href = WA_LINK; $("waFloat").href = WA_LINK;
 $("phoneShow").textContent = "+" + SHOP_PHONE;
-renderCats(); renderGrid(); renderCart();
+function renderShowcase() {
+  const imgs = PRODUCTS.filter(p => p.image);
+  const row = list => { const html = list.map(p => `<a class="m-card" href="#shop" title="${p.name}"><img src="${p.image}" alt="${p.name}" loading="lazy"><span>${p.cat}</span></a>`).join(""); return html + html; };
+  const half = Math.ceil(imgs.length / 2);
+  $("row1").innerHTML = row(imgs.slice(0, half));
+  $("row2").innerHTML = row(imgs.slice(half));
+}
+function initSlider() {
+  const seen = new Set(), picks = [];
+  PRODUCTS.forEach(p => { if (p.image && !seen.has(p.cat)) { seen.add(p.cat); picks.push(p); } });
+  $("slides").innerHTML = picks.map(p => `<div class="slide" style="background-image:url('${p.image}')"></div>`).join("");
+  $("dots").innerHTML = picks.map((_, i) => `<i data-i="${i}"></i>`).join("");
+  const slides = document.querySelectorAll(".slide"), dots = document.querySelectorAll("#dots i");
+  let cur = 0, timer;
+  const show = i => {
+    cur = (i + picks.length) % picks.length;
+    slides.forEach((s, k) => s.classList.toggle("on", k === cur));
+    dots.forEach((d, k) => d.classList.toggle("on", k === cur));
+    $("slName").textContent = picks[cur].name;
+    $("slPrice").textContent = inr(picks[cur].price) + " • " + picks[cur].cat;
+  };
+  const start = () => { clearInterval(timer); timer = setInterval(() => show(cur + 1), 3500); };
+  dots.forEach(d => d.onclick = () => { show(+d.dataset.i); start(); });
+  show(0); start();
+}
+$("waHero").href = WA_LINK;
+initSlider(); renderShowcase(); renderCats(); renderGrid(); renderCart();

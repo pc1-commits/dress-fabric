@@ -68,3 +68,45 @@ footer b{font-family:'Playfair Display',serif;font-size:22px;display:block;margi
 .wa-btn:hover{transform:translateY(-2px)}
 .wa-float{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 6px 20px rgba(37,211,102,.55);z-index:9}
 @media(max-width:600px){.wa-btn{padding:9px 12px;font-size:12px}.top{padding:10px 12px;gap:8px}.logo{font-size:22px}.img{height:240px}.grid{grid-template-columns:repeat(2,1fr);gap:12px}.hero{padding:60px 16px}}
+
+.showcase{padding:26px 0;background:linear-gradient(180deg,#fff,var(--p1));overflow:hidden}
+.marquee{overflow:hidden;margin:12px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;gap:16px;width:max-content;animation:scrollL 60s linear infinite}
+.track.rev{animation-name:scrollR;animation-duration:70s}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes scrollL{to{transform:translateX(calc(-50% - 8px))}}
+@keyframes scrollR{from{transform:translateX(calc(-50% - 8px))}to{transform:none}}
+.m-card{position:relative;flex:none;width:190px;height:250px;border-radius:18px;overflow:hidden;box-shadow:0 6px 18px rgba(229,123,160,.3);transition:.3s}
+.m-card:hover{transform:scale(1.07) rotate(-1deg);z-index:2}
+.m-card img{width:100%;height:100%;object-fit:cover;object-position:top}
+.m-card span{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.9);color:var(--p6);font-size:12px;font-weight:500;padding:4px 12px;border-radius:20px}
+.hero .badge{animation:float 3s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-6px)}}
+@media(max-width:600px){.m-card{width:140px;height:190px}}
+@media(prefers-reduced-motion:reduce){.track{animation:none}}
+
+/* animated split hero */
+.hero{display:flex;align-items:center;justify-content:center;gap:50px;text-align:left;padding:60px 6vw;flex-wrap:wrap}
+.hero-text{flex:1 1 380px;max-width:560px;animation:rise .9s both}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.hero .btn{display:inline-block;text-decoration:none;padding:13px 28px;font-size:15px;margin:0}
+.btn-wa{background:#25d366;box-shadow:0 4px 12px rgba(37,211,102,.4)}
+.stats{display:flex;gap:30px}
+.stats div{display:flex;flex-direction:column}
+.stats b{font-family:'Playfair Display',serif;font-size:28px;color:var(--p6)}
+.stats span{font-size:12px;color:var(--muted)}
+.hero-slider{position:relative;flex:0 1 380px;width:380px;max-width:100%;height:480px;border-radius:200px 200px 24px 24px;box-shadow:0 20px 50px rgba(201,79,124,.35);border:6px solid #fff;animation:rise .9s .2s both}
+.slides{position:absolute;inset:0;border-radius:inherit;overflow:hidden}
+.slide{position:absolute;inset:0;background-size:cover;background-position:top;opacity:0;transform:scale(1);transition:opacity 1s}
+.slide.on{opacity:1;animation:zoom 6s linear forwards}
+@keyframes zoom{to{transform:scale(1.12)}}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.slide-info{position:absolute;left:14px;right:14px;bottom:34px;background:rgba(255,255,255,.88);backdrop-filter:blur(6px);border-radius:16px;padding:10px 14px;display:flex;flex-direction:column;font-size:14px;color:var(--p6)}
+.slide-info span{font-size:12px;color:var(--muted)}
+.dots{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:7px}
+.dots i{width:9px;height:9px;border-radius:50%;background:#fff;opacity:.6;cursor:pointer;transition:.3s}
+.dots i.on{width:24px;border-radius:6px;background:var(--p5);opacity:1}
+.float{position:absolute;font-size:30px;animation:bob 3s ease-in-out infinite;z-index:2}
+.f1{left:-24px;top:90px}.f2{right:-18px;top:40px;animation-delay:.8s}.f3{right:-26px;bottom:110px;animation-delay:1.6s}
+@keyframes bob{50%{transform:translateY(-14px) rotate(8deg)}}
+@media(max-width:700px){.hero{text-align:center;padding:40px 16px;gap:30px}.hero-btns,.stats{justify-content:center}.hero-slider{height:400px;width:300px}}

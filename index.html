@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dress Fabric</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="#">Dress <span>Fabric</span></a>
+  <input id="search" type="search" placeholder="Search dresses...">
+  <a id="waTop" class="wa-btn" target="_blank" rel="noopener">💬 WhatsApp Us</a>
+  <button id="cartBtn" class="cart-btn">🛍 Cart (<span id="cartCount">0</span>)</button>
+</header>
+
+<section class="hero">
+  <span class="badge">✨ New Collection 2026</span>
+  <h1>Find Your <em>Perfect</em> Dress</h1>
+  <p>Party • Wedding • Casual • Ethnic • Kids — beautiful dresses for every occasion</p>
+  <a class="btn" href="#shop">Shop Now</a>
+</section>
+<div class="perks"><span>🚚 Fast Delivery</span><span>💖 Premium Fabric</span><span>🔄 Easy Exchange</span><span>💬 Order on WhatsApp</span></div>
+
+<main id="shop">
+  <h2 class="sec-title">Shop by Category</h2>
+  <p class="sec-sub">Choose a category and find your favourite dress</p>
+  <nav id="categories" class="cats" aria-label="Categories"></nav>
+  <div class="toolbar">
+    <h2 id="catTitle">All Dresses</h2>
+    <select id="sort">
+      <option value="">Sort: Featured</option>
+      <option value="low">Price: Low to High</option>
+      <option value="high">Price: High to Low</option>
+    </select>
+  </div>
+  <div id="grid" class="grid"></div>
+  <p id="empty" class="empty" hidden>No dresses found.</p>
+</main>
+
+<aside id="cart" class="cart" hidden>
+  <div class="cart-head"><h3>Your Cart</h3><button id="closeCart">✕</button></div>
+  <div id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="total">Total: <b id="cartTotal">₹0</b></div>
+    <button id="order" class="btn">Order on WhatsApp</button>
+  </div>
+</aside>
+
+<footer>
+  <p><b>Dress Fabric</b>© Dress Fabric • Call/WhatsApp: <span id="phoneShow"></span></p>
+</footer>
+<a id="waFloat" class="wa-float" target="_blank" rel="noopener" title="Chat on WhatsApp">💬</a>
+<script src="app.js"></script>
+</body>
+</html>
